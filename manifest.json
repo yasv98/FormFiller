@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "Form Filler",
+    "description": "A chrome plugin that automatically fills out forms for you with preset data",
+    "version": "1.0",
+    "action": { 
+      "default_popup": "index.html",
+      "default_icon": "images/icon-16.png"
+    },
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ]  
+  }
