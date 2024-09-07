@@ -11,29 +11,23 @@ function fillInputsWithRegex() {
     // Select all input elements
     const inputs = document.querySelectorAll('input');
 
-    // Regular expressions to match inputs in the name attribute
-    const firstNameRegex = /firstname/i;
-    const lastnameRegex = /lastname/i;
-    const dateOfBirthRegex = /birth/i;
-    const emailRegex = /email/i;
-    const addressRegex = /address/i;    
+    // Object mapping input types to their default values
+    const defaultValues = {
+        firstname: "First Name",
+        lastname: "Last Name",
+        birth: "01/01/1999",
+        email: "email@example.com",
+        address: "Address",
+    };
 
-    // Filter inputs based on the regular expression and set their value
+    // Iterate over inputs to check both 'id' and 'name' attributes against regex patterns and set values accordingly
     inputs.forEach(input => {
-        if (firstNameRegex.test(input.id)) {
-            input.value = "Yashuk";
-        }
-        if (lastnameRegex.test(input.id)) {
-            input.value = "Vashisht";
-        }
-        if (dateOfBirthRegex.test(input.id)) {
-            input.value = "06/08/1998";
-        }
-        if (addressRegex.test(input.id)) {
-            input.value = "53 Arbour Boulevard Burnside Heights";
-        }
-        if (emailRegex.test(input.id)) {
-            input.value = "yashukvashisht@gmail.com"
-        }
+        Object.keys(defaultValues).forEach(key => {
+            const regex = new RegExp(key, 'i'); // Case-insensitive match
+            // Check both 'id' and 'name' attributes for a match
+            if (regex.test(input.id) || regex.test(input.name)) {
+                input.value = defaultValues[key];
+            }
+        });
     });
 }
